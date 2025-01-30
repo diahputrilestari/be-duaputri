@@ -5,6 +5,7 @@ const connectDB = require("./config/db");
 const menuRoutes = require("./routes/menuRoutes");
 const packageRoutes = require("./routes/packageRoutes"); // Import package routes
 const cartRoutes = require("./routes/cartRoutes");
+const authRoutes = require('./routes/authRoutes');
 
 dotenv.config();
 connectDB();
@@ -19,6 +20,9 @@ app.use("/api/menu", menuRoutes);
 app.use("/api/packages", packageRoutes); // Set the base path for package routes
 
 app.use("/api/cart", cartRoutes);
+
+// Use the auth routes
+app.use('/api', authRoutes);
 
 
 const PORT = process.env.PORT || 5000;

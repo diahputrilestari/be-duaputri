@@ -1,4 +1,5 @@
 const express = require("express");
+const authenticateToken = require("../middleware/authMiddleware");
 const { getAllPackages, addPackage, getPackageByPackageName, editPackage, deletePackage } = require("../controllers/packageController");
 
 const router = express.Router();
@@ -7,7 +8,8 @@ const router = express.Router();
 router.post("/add", addPackage); // This should be a POST route
 
 // Route to get all packages
-router.get("/", getAllPackages);
+// router.get("/", authenticateToken,getAllPackages);
+router.get("/",getAllPackages);
 
 // Route to get packages by packageName
 router.get("/packageName/:packageName", getPackageByPackageName); // Use a parameter for packageName
